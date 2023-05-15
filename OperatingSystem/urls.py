@@ -20,6 +20,7 @@ from OperatingSystem import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home),
-    path('process/',views.process)
+    path('',views.home,name="home"),
+    path('process/',views.process,name="process"),
+    path('create_process/',views.process_form,name="process form")
 ]

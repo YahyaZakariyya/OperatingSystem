@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 def home(request):
     data = {
@@ -16,3 +17,25 @@ def process(request):
         ]
     }
     return render(request, "process.html",data)
+
+def process_form(request):
+    try:
+        pid = request.GET['pid']
+        at = request.GET['at']
+        bt = request.GET['bt']
+        button = request.GET['create']
+        return HttpResponseRedirect('/process/')
+        print('try block')
+    except:
+        print('except block')
+        pass
+    return render(request, 'processform.html')
+
+def create_process(request):
+    try:
+        pid = request.GET['pid']
+        at = request.GET['at']
+        bt = request.GET['bt']
+    except:
+        pass
+    return render(request, 'process.html')

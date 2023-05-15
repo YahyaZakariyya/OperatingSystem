@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="test">This is process page</h1>
-<table border=2>
-    <thead>
-        <th>Process ID</th>
-        <th>Arrival Time</th>
-        <th>Burst Time</th>
+<a class="btn btn-dark rounded-0" href="{% url 'process form' %}">Create Process</a>
+<div class="container col-md-10 mx-auto">
+<table class='table'>
+    <thead class="bg-dark text-light">
+        <th scope='col'>Process ID</th>
+        <th scope='col'>Arrival Time</th>
+        <th scope='col'>Burst Time</th>
+        <th scope='col'>Waiting Time</th>
+        <th scope='col'>Turnaround Time</th>
     </thead>
     <tbody>
         {%for x in processes%}
@@ -17,4 +20,5 @@
         {% endfor %}
     </tbody>
 </table>
+</div>
 {% endblock content %}

@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-    <button>Process Management</button>
-    <button>Memory Management</button>
-    <button>Process Management</button>
+
+<div class="container text-center col-md-6 bg-primary">
+    <!-- <div class="row justify-content-center"> -->
+    <div class="d-grid gap-2 col-10 mx-auto py-2">
+        <a class="btn btn-lg btn-light rounded-0" href="{% url 'process' %}">Process Management</a>
+        <a class="btn btn-lg btn-light rounded-0" href="">Memory Management</a>
+        <a class="btn btn-lg btn-light rounded-0" href="">I/O Management</a>
+    </div>
+</div>
 {% endblock content %}
