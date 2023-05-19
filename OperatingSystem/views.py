@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from processes.models import processes
 
 def home(request):
     data = {
@@ -8,13 +9,10 @@ def home(request):
     return render(request, 'index.html', data)
 
 def process(request):
+    process_table = processes.objects.all()
     data = {
         "title":"Process Management",
-        "processes":[
-            {"pid":1,"at":0,"bt":4},
-            {"pid":2,"at":2,"bt":3},
-            {"pid":3,"at":5,"bt":7}
-        ]
+        "process_table":process_table
     }
     return render(request, "process.html",data)
 

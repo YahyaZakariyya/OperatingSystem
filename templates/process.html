@@ -1,21 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-<a class="btn btn-dark rounded-0" href="{% url 'process form' %}">Create Process</a>
 <div class="container col-md-10 mx-auto">
 <table class='table'>
     <thead class="bg-dark text-light">
         <th scope='col'>Process ID</th>
         <th scope='col'>Arrival Time</th>
         <th scope='col'>Burst Time</th>
-        <th scope='col'>Waiting Time</th>
-        <th scope='col'>Turnaround Time</th>
+        <!-- <th scope='col'>Waiting Time</th> -->
+        <!-- <th scope='col'>Turnaround Time</th> -->
     </thead>
     <tbody>
-        {%for x in processes%}
+        {%for x in process_table%}
         <tr>
-            {%for i in x.values%}
-            <td>{{i}}</td>
-            {% endfor %}
+            <td>{{x.process_id}}</td>
+            <td>{{x.arrival_time}}</td>
+            <td>{{x.burst_time}}</td>
         </tr>
         {% endfor %}
     </tbody>
