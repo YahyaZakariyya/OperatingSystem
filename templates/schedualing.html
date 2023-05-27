@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container col-md-10 mx-auto">
+<h1 class="text-center bg-dark text-light py-3">First Come First Serve(FCFS)</h1>
+
+<!-- Process Table -->
+<h2 class="text-center bg-primary text-light my-0 py-2">Process Table</h2>
+<table class='table border border-dark'>
+    <thead class="bg-dark text-light">
+        <th scope='col'>Process ID</th>
+        <th scope='col'>Arrival Time</th>
+        <th scope='col'>Burst Time</th>
+        <th scope='col'>Response Time</th>
+        <th scope='col'>Turnaround Time</th>
+        <th scope='col'>Waiting Time</th>
+    </thead>
+    <tbody>
+        {%for key,value in process_table.items%}
+        <tr>
+            {%for k,v in value.items%}
+            <td>{{v}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Gantt Chart -->
+<h2 class="text-center bg-primary text-light my-0 py-2">Gantt Chart</h1>
+<p class="text-center bg-dark text-light p-3">
+{% for element in gantt_chart %}
+    {% if element|add:1%}
+        <sub>{{element}}</sub>
+    {% else %}
+        <b>{{element}}</b>
+    {% endif %}
+{% endfor %}
+</p>
+</div>
+{% endblock content %}
