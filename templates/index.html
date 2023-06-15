@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container text-center col-md-6 bg-primary">
+<div class="container col-md-10 mx-auto">
+<h1 class="text-center bg-dark text-light py-3">YZ Operating System</h1>
+
+<div class="container text-center bg-light">
     <!-- <div class="row justify-content-center"> -->
-    <div class="d-grid gap-2 col-10 mx-auto py-2">
-        <a class="btn btn-lg btn-light rounded-0" href="{% url 'process' %}">Process Management</a>
-        <a class="btn btn-lg btn-light rounded-0" href="">Memory Management</a>
-        <a class="btn btn-lg btn-light rounded-0" href="">I/O Management</a>
+    <div class="d-grid gap-2 col-5 mx-auto py-2">
+        <a class="btn btn-lg btn-primary rounded-0" href="{% url 'processManagement' %}">Process Management</a>
+        <a class="btn btn-lg btn-primary rounded-0" href="">Memory Management</a>
+        <a class="btn btn-lg btn-primary rounded-0" href="">I/O Management</a>
     </div>
 </div>
 {% endblock content %}

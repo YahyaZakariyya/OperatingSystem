@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container col-md-10 mx-auto">
-<h1 class="text-center bg-dark text-light py-3">First Come First Serve(FCFS)</h1>
+<h1 class="text-center bg-dark text-light py-3">{{schedualing}}</h1>
 
 <!-- Process Table -->
 <h2 class="text-center bg-primary text-light my-0 py-2">Process Table</h2>
 <table class='table border border-dark'>
     <thead class="bg-dark text-light">
         <th scope='col'>Process ID</th>
+        {%if schedualing == "Priority(Non-Preemptive)"%}
+            <th scope='col'>Priority</th>
+        {%endif%}
         <th scope='col'>Arrival Time</th>
         <th scope='col'>Burst Time</th>
         <th scope='col'>Response Time</th>
@@ -36,5 +39,25 @@
     {% endif %}
 {% endfor %}
 </p>
+
+<h2 class="text-center bg-primary text-light my-0 py-2">Process States</h1>
+<table class='table border border-dark'>
+    <thead class="bg-dark text-light">
+        {%for x in process_states%}
+        <th scope='col'>{{x}}</th>
+        {%endfor%}
+    </thead>
+    <tbody>
+        {%for i in counter%}
+        <tr>
+            {%for key,value in process_states.items%}
+            <td>{{value.0}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
 </div>
 {% endblock content %}

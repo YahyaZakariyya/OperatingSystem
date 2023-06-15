@@ -19,9 +19,9 @@ from django.urls import path
 from OperatingSystem import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('',views.home,name="home"),
-    path('process/',views.process,name="process"),
+    path('processManagement/',views.processManagement,name="processManagement"),
     path('fcfs/',views.fcfs,name="fcfs"),
-    path('roundrobin/',views.fcfs,name="roundrobin"),
+    path('priority/',views.priority,name="priority"),
 ]

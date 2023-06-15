@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container col-md-10 mx-auto">
-<table class='table'>
+<h1 class="text-center bg-dark text-light py-3">Process Management</h1>
+
+<h2 class="text-center bg-primary text-light my-0 py-2">Process Table</h2>
+<table class='table border border-dark'>
     <thead class="bg-dark text-light">
         <th scope='col'>Process ID</th>
         <th scope='col'>Arrival Time</th>
         <th scope='col'>Burst Time</th>
-        <!-- <th scope='col'>Waiting Time</th> -->
-        <!-- <th scope='col'>Turnaround Time</th> -->
+        <th scope='col'>Priority</th>
     </thead>
     <tbody>
         {%for x in process_table%}
@@ -15,6 +17,7 @@
             <td>{{x.process_id}}</td>
             <td>{{x.arrival_time}}</td>
             <td>{{x.burst_time}}</td>
+            <td>{{x.priority}}</td>
         </tr>
         {% endfor %}
     </tbody>
