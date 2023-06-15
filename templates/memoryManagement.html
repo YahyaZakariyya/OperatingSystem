@@ -3,10 +3,19 @@
 
 <h1 class="text-center bg-dark text-light py-3">{{title}}</h1>
 
-<h2 class="text-center bg-primary text-light my-0 py-2">Total Space: {{total_space}}MB   Used Space: {{used_space}}MB  Free Space: {{free_space}}MB</h2>
-<table class='table border border-dark'>
-    <thead class="bg-dark text-light">
-        <th scope='col'>Process ID</th>
+<h4 class="text-center bg-dark text-light my-0 py-2">Free Space: {{free_space}}/{{total_space}}MB</h4>
+<div class="progress">
+    <div class="progress-bar bg-danger" role="progressbar" style="width: {{used_prcnt}}%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="{{memory_prcnt}}"></div>
+</div>
+<h4 class="text-center bg-dark text-light my-0 py-2">Used Space: {{used_space}}/{{total_space}}MB</h4>
+<div class="progress">
+    <div class="progress-bar bg-warning" role="progressbar" style="width: {{free_prcnt}}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="{{memory_prcnt}}"></div>
+</div>
+<br>
+
+<table class='table border border-dark table-light'>
+    <thead class="thead-dark">
+        <th scope='col'>Process</th>
         <th scope='col'>No.of Pages</th>
     </thead>
     <tbody>

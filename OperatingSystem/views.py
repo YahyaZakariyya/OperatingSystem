@@ -136,7 +136,35 @@ def memoryManagement(request):
         "title":"Memory Management",
         "page_size":dictonary,
         "total_space":memorySize,
+        "total_prcnt":int(memorySize/memorySize)*100,
         "used_space":usedMemory,
+        "used_prcnt":int((usedMemory/memorySize)*100),
         "free_space":freeMemory,
+        "free_prcnt":int((freeMemory/memorySize)*100),
+    }
+    print(int((usedMemory/memorySize)*100))
+    return render(request, "memoryManagement.html", data)
+
+def lru_page_replacement(request):
+    page_string = "7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1"
+    pages = [int(page) for page in page_string.split(",")]
+    frame_size = 4
+    frames = []
+    page_faults = 0
+    lru = list()
+
+    for page in pages:
+        if page in frames:
+            frames.remove(page)
+            frames.append(page)
+        else:
+            page_faults += 1
+            if len(frames) == frame_size:
+                frames.pop(0)
+            frames.append(page)
+        lru.append(frames)
+
+    data = {
+        "title":"LRU Management",
     }
     return render(request, "memoryManagement.html", data)
