@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container col-md-10 mx-auto">
 <h1 class="text-center bg-dark text-light py-3">{{schedualing}}</h1>
 
 <!-- Process Table -->
-<h2 class="text-center bg-primary text-light my-0 py-2">Process Table</h2>
-<table class='table border border-dark'>
-    <thead class="bg-dark text-light">
+<h2 class="text-center bg-dark text-light my-0 py-2">Process Table</h2>
+<table class='table border border-dark table-light'>
+    <thead>
         <th scope='col'>Process ID</th>
         {%if schedualing == "Priority(Non-Preemptive)"%}
             <th scope='col'>Priority</th>
@@ -17,7 +16,7 @@
         <th scope='col'>Turnaround Time</th>
         <th scope='col'>Waiting Time</th>
     </thead>
-    <tbody>
+    <tbody class="bg-light">
         {%for key,value in process_table.items%}
         <tr>
             {%for k,v in value.items%}
@@ -29,8 +28,8 @@
 </table>
 
 <!-- Gantt Chart -->
-<h2 class="text-center bg-primary text-light my-0 py-2">Gantt Chart</h1>
-<p class="text-center bg-dark text-light p-3">
+<h2 class="text-center bg-dark text-light my-0 py-2">Gantt Chart</h1>
+<p class="text-center bg-light p-3">
 {% for element in gantt_chart %}
     {% if element|add:1%}
         <sub>{{element}}</sub>
@@ -40,7 +39,8 @@
 {% endfor %}
 </p>
 
-<h2 class="text-center bg-primary text-light my-0 py-2">Process States</h1>
+<!-- Process States -->
+<h2 class="text-center bg-dark text-light my-0 py-2">Process States</h1>
 <table class='table border border-dark'>
     <thead class="bg-dark text-light">
         {%for x in process_states%}
@@ -58,6 +58,4 @@
     </tbody>
 </table>
 
-
-</div>
 {% endblock content %}

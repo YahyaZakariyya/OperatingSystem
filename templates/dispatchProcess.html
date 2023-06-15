@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="text-center bg-dark text-light py-3">{{title}}</h1>
+
+<div class="container text-center bg-light">
+    <div class="d-grid gap-2 col-5 mx-auto py-2">
+        <a class="btn btn-lg btn-primary rounded-0" href="{% url 'fcfs' %}">FCFS</a>
+        <a class="btn btn-lg btn-primary rounded-0" href="{% url 'priority' %}">PRIORITY</a>
+    </div>
+</div>
+{% endblock content %}

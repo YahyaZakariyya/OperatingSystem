@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="text-center bg-dark text-light py-3">{{title}}</h1>
+
+<h2 class="text-center bg-primary text-light my-0 py-2">Total Space: {{total_space}}MB   Used Space: {{used_space}}MB  Free Space: {{free_space}}MB</h2>
+<table class='table border border-dark'>
+    <thead class="bg-dark text-light">
+        <th scope='col'>Process ID</th>
+        <th scope='col'>No.of Pages</th>
+    </thead>
+    <tbody>
+        {%for x, y in page_size.items %}
+        <tr>
+            <td>{{x}}</td>
+            <td>{{y}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

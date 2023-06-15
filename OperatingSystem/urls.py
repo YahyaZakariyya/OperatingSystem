@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('',views.home,name="home"),
     path('processManagement/',views.processManagement,name="processManagement"),
-    path('fcfs/',views.fcfs,name="fcfs"),
-    path('priority/',views.priority,name="priority"),
+    path('processManagement/dispatchProcess/',views.dispatchProcess,name="dispatchProcess"),
+    path('processManagement/dispatchProcess/fcfs/',views.fcfs,name="fcfs"),
+    path('processManagement/dispatchProcess/priority/',views.priority,name="priority"),
+    path('memoryManagement/',views.memoryManagement,name="memoryManagement"),
 ]

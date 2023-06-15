@@ -1,12 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+# from django.http import HttpResponseRedirect
 from processes.models import processes
+from math import ceil
 
 def home(request):
     data = {
         "title":"Operating Systems",
     }
     return render(request, 'index.html', data)
+
+def dispatchProcess(request):
+    data = {
+        "title":"Dispatch Process",
+    }
+    return render(request, "dispatchProcess.html",data)
 
 def processManagement(request):
     data = {
@@ -28,11 +35,7 @@ def fcfs(request):
     dictonary = {}
     count = 0
     gantt_chart = []
-    process_states = {}
     for i in process_table:
-        process_states[i.process_id] = list()
-    for i in process_table:
-        start = count
         gantt_chart.append(count)
         if count < i.arrival_time:
             gantt_chart.append('idle')
@@ -115,3 +118,25 @@ def priority(request):
 
     return render(request, "schedualing.html", data)
     
+
+def memoryManagement(request):
+    memorySize = 1024
+    frameSize = 4
+    usedMemory = 0
+    process_table = processes.objects.all()
+    dictonary = {}
+    for i in process_table:
+        if usedMemory + ceil(i.memory/frameSize) > memorySize:
+            continue
+        usedMemory += ceil(i.memory/frameSize)
+        dictonary[i.process_id] = ceil(i.memory/frameSize)
+    usedMemory*=frameSize
+    freeMemory = memorySize-usedMemory
+    data = {
+        "title":"Memory Management",
+        "page_size":dictonary,
+        "total_space":memorySize,
+        "used_space":usedMemory,
+        "free_space":freeMemory,
+    }
+    return render(request, "memoryManagement.html", data)
