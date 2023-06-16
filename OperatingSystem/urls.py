@@ -22,8 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('',views.home,name="home"),
     path('processManagement/',views.processManagement,name="processManagement"),
-    path('processManagement/dispatchProcess/',views.dispatchProcess,name="dispatchProcess"),
-    path('processManagement/dispatchProcess/fcfs/',views.fcfs,name="fcfs"),
-    path('processManagement/dispatchProcess/priority/',views.priority,name="priority"),
+    path('processManagement/processSchedualing/',views.processSchedualing,name="processSchedualing"),
+    path('processManagement/processSchedualing/fcfs/',views.fcfs,name="fcfs"),
+    path('processManagement/processSchedualing/priority/',views.priority,name="priority"),
     path('memoryManagement/',views.memoryManagement,name="memoryManagement"),
+    path('memoryManagement/paging/',views.noofpages,name="paging"),
+    path('memoryManagement/lru/',views.lru_page_replacement,name="lru"),
 ]

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="text-center bg-dark text-light py-3">{{title}}</h1>
+
+<table class='table border border-dark table-light'>
+    <thead class="thead-dark">
+        <th scope='col'>Hit/Miss</th>
+        {%for i in frames%}
+            <th scope='col'>{{i}}</th>
+        {%endfor%}
+    </thead>
+    <tbody>
+        {%for x in lru %}
+        <tr>
+            {%for y in x%}
+            <td>{{y}}</td>
+            {%endfor%}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

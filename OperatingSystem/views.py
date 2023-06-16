@@ -9,11 +9,17 @@ def home(request):
     }
     return render(request, 'index.html', data)
 
-def dispatchProcess(request):
+def processSchedualing(request):
     data = {
         "title":"Dispatch Process",
     }
     return render(request, "dispatchProcess.html",data)
+
+def memoryManagement(request):
+    data = {
+        "title":"Memory Management",
+    }
+    return render(request, "memoryManagement.html",data)
 
 def processManagement(request):
     data = {
@@ -75,9 +81,7 @@ def priority(request):
     while process:
         flag = True
         for i in process:
-            print(i.process_id, i.priority)
             if i.arrival_time <= count:
-                print("IF break")
                 pcb.append(i)
                 process.remove(i)
                 flag = False
@@ -119,7 +123,7 @@ def priority(request):
     return render(request, "schedualing.html", data)
     
 
-def memoryManagement(request):
+def noofpages(request):
     memorySize = 1024
     frameSize = 4
     usedMemory = 0
@@ -143,7 +147,7 @@ def memoryManagement(request):
         "free_prcnt":int((freeMemory/memorySize)*100),
     }
     print(int((usedMemory/memorySize)*100))
-    return render(request, "memoryManagement.html", data)
+    return render(request, "noofpages.html", data)
 
 def lru_page_replacement(request):
     page_string = "7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1"
@@ -154,17 +158,23 @@ def lru_page_replacement(request):
     lru = list()
 
     for page in pages:
+        temp = frames.copy()
         if page in frames:
             frames.remove(page)
             frames.append(page)
+            temp.insert(0,'Hit')
         else:
             page_faults += 1
             if len(frames) == frame_size:
                 frames.pop(0)
             frames.append(page)
-        lru.append(frames)
+            temp.insert(0,'Miss')
+        lru.append(temp)
 
+    lru.pop(0)
     data = {
         "title":"LRU Management",
+        "lru":lru,
+        "frames":[x for x in range(1,frame_size+1)]
     }
-    return render(request, "memoryManagement.html", data)
+    return render(request, "lru.html", data)
