@@ -15,17 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from OperatingSystem import views
+from django.urls import include, path
+from django.views.generic import TemplateView
+from processes.views import ProcessViewSet
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'processes', ProcessViewSet)
+
 
 urlpatterns = [
+    path('api/',include(router.urls)),
     path('admin/', admin.site.urls, name='admin'),
-    path('',views.home,name="home"),
-    path('processManagement/',views.processManagement,name="processManagement"),
-    path('processManagement/processSchedualing/',views.processSchedualing,name="processSchedualing"),
-    path('processManagement/processSchedualing/fcfs/',views.fcfs,name="fcfs"),
-    path('processManagement/processSchedualing/priority/',views.priority,name="priority"),
-    path('memoryManagement/',views.memoryManagement,name="memoryManagement"),
-    path('memoryManagement/paging/',views.noofpages,name="paging"),
-    path('memoryManagement/lru/',views.lru_page_replacement,name="lru"),
+    path('', TemplateView.as_view(template_name='home/index.html')),
+    path('process-management/', include("processes.urls"))
+    # path('memoryManagement/',views.memoryManagement,name="memoryManagement"),
+    # path('memoryManagement/paging/',views.noofpages,name="paging"),
+    # path('memoryManagement/lru/',views.lru_page_replacement,name="lru"),
 ]

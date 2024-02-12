@@ -8,6 +8,7 @@ input_regex = RegexValidator(
 
 # Create your models here.
 class processes(models.Model):
+    p_id = models.AutoField(primary_key=True)
     process_id = models.CharField(max_length=3, unique=True,validators=[input_regex])
     arrival_time = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
     burst_time = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])

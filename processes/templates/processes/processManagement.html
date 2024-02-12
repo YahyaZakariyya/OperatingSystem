@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="text-center bg-dark text-light py-3">{{title}}</h1>
+
+<div class="container text-center bg-light">
+
+<h2 class="text-center bg-dark text-light my-0 py-2">Process Table</h2>
+<table class='table border border-dark'>
+    <thead class="bg-dark text-light">
+        <th scope='col'>Process ID</th>
+        <th scope='col'>Arrival Time</th>
+        <th scope='col'>Burst Time</th>
+        <th scope='col'>Priority</th>
+        <th scope='col'>Update</th>
+        <th scope='col'>Delete</th>
+    </thead>
+    <tbody>
+        {%for x in process_table%}
+        <tr>
+            <td>{{x.process_id}}</td>
+            <td>{{x.arrival_time}}</td>
+            <td>{{x.burst_time}}</td>
+            <td>{{x.priority}}</td>
+            <td><button type="button" class="btn btn-success">Edit</button></td>
+            <td><button type="button" class="btn btn-danger"><a href="{% url 'processes:process_delete' x.id %}">Delete</a></button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    <!-- <div class="row justify-content-center"> -->
+    <div class="d-grid gap-2 col-5 mx-auto py-2">
+        <a class="btn btn-lg btn-primary rounded-0" href={% url 'processes:process_create' %}>Create Process</a>
+        <a class="btn btn-lg btn-primary rounded-0" href="{% url 'processes:processSchedualing' %}">Process Schedualing</a>
+    </div>
+</div>
+{% endblock content %}
